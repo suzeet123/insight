@@ -25,7 +25,7 @@ require_login();
 		$conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
 
     // Take some time to understand this query!
-		$query  = "SELECT * FROM `hotelmaintainance` ORDER BY `date` ASC 		\n";
+		$query  = "SELECT * FROM hotelmaintainance WHERE MONTH( DATE ) = MONTH( DATE_SUB(CURDATE(),INTERVAL 1 MONTH ))		\n";
 
 
 

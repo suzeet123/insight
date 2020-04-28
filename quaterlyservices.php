@@ -10,7 +10,7 @@ require_login();
 <!DOCTYPE html>
 <html>
 <head>
-    <title>quarterly maintenance</title>
+    <title>quarterly services</title>
     <link rel="stylesheet" type="text/css" href="style/style.css">
 </head>
 
@@ -25,7 +25,7 @@ require_login();
 		$conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
 
     // Take some time to understand this query!
-		$query  = "SELECT * FROM `service` 		\n";
+		$query  = "SELECT * FROM service WHERE MONTH( DATE ) = MONTH( DATE_SUB(CURDATE(),INTERVAL 3 MONTH ))		\n";
 		/* $query = "SELECT * FROM `hotelmaintainance`
 WHERE DATEPART(m, date) = DATEPART(m, DATEADD(m, -1, getdate()))
 AND DATEPART(yyyy, date) = DATEPART(yyyy, DATEADD(m, -1, getdate()))  /n"; */

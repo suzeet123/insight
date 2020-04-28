@@ -10,7 +10,7 @@ require_login();
 <!DOCTYPE html>
 <html>
 <head>
-    <title>edit profile</title>
+    <title>available car</title>
     <link rel="stylesheet" type="text/css" href="style/style.css">
 </head>
 
@@ -25,10 +25,7 @@ require_login();
 		$conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
 
     // Take some time to understand this query!
-		$query  = "select * from hotelmaintainance where `date` >= DATE_SUB(CURDATE(), INTERVAL 7 DAY) 		\n";
-		/* $query = "SELECT * FROM `hotelmaintainance`
-WHERE DATEPART(m, date) = DATEPART(m, DATEADD(m, -1, getdate()))
-AND DATEPART(yyyy, date) = DATEPART(yyyy, DATEADD(m, -1, getdate()))  /n"; */
+		$query  = "SELECT * FROM `availablecar` 		\n";
 
 
 
@@ -37,16 +34,16 @@ $id = logged_in_user();
 $stmt->bindValue(1, $id);
 $stmt->execute();
 ?>
-<h2> Maintaiance </h2>
+<h2> Available Car </h2>
 <table>
-<tr><th>maintainance id </th><th>Invoice number</th><th>date</th><th>description</th>
+<tr><th>	Available car </th><th>Date</th><td><th>Rego Number</th></td><td><th>Car Type</th></td><td><th>location</th></td>
 <?php foreach($stmt as $row): ?>
 <tr style="font-weight:<?php echo $weight;?>; color:<?php echo $color;?> ">
-				<td><?php echo htmlentities($row['maintainanceid']); ?></td>
-				<td><?php echo htmlentities($row['invoicenumber']); ?></td>
-				<td><?php echo htmlentities($row['date']); ?></td>
-				<td><?php echo htmlentities($row['description']); ?></td>
-
+				<td><?php echo htmlentities($row['availablecar_id']); ?></td>
+				<td><?php echo htmlentities($row['date']); ?></td><td></td>
+				<td><?php echo htmlentities($row['Rego_number']); ?></td><td></td>
+				<td><?php echo htmlentities($row['cartype']); ?></td><td></td>
+				<td><?php echo htmlentities($row['location']); ?></td><td></td>
 
 			</tr>
 		<?php
